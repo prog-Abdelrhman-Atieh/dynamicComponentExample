@@ -1,0 +1,36 @@
+<div class="col-md-{{size}} p-2">
+    <div class="dashboard-widget">
+        <div class="dashboard-widget-header">
+            <h3 class="fs-4 dashboard-widget-label">Top Products</h3>
+        </div>
+    
+        <div class="dashboard-widget-body p-0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Popularity</th>
+                        <th>Sales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (row of data; track $index) {
+                        <tr>
+                            <td>{{row.name}}</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-active" [style.width.%]="row.popularity"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="chip">
+                                    {{row.sales}}%
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

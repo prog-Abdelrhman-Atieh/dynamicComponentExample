@@ -1,0 +1,13 @@
+.layout{
+
+    &-side-menu{
+        width: 16rem;
+    }
+
+    &-body{
+        &-content{
+            border-start-start-radius: 1rem;
+            background-color: var(--background-color-300);
+        }
+    }
+}

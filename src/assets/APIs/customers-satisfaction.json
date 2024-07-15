@@ -1,0 +1,5 @@
+{
+    "thisYear": [90, 80, 82, 78, 75, 87, 90],
+    "lastYear": [70, 60, 44, 50, 30, 66, 83],
+    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
+}

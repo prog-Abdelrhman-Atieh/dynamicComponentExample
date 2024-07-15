@@ -1,0 +1,16 @@
+<div class="side-menu h-100 d-flex flex-column">
+    <div class="side-menu-header p-4 flex-shrink-0 d-flex align-items-center gap-3">
+        <div class="logo">
+            <span class="icon-bubble_chart"></span>
+        </div>
+        <h1 class="mb-0 fs-4">ABCD</h1>
+    </div>
+    <div class="side-menu-body flex-grow-1 overflow-auto p-4 pt-2">
+        @for(item of sideMenuItems; track item.label; let isFirst = $first){
+            <div class="side-menu-item d-flex align-items-center gap-3 mb-3 p-3 rounded-4" [ngClass]="{'active': isFirst}">
+                <span class="side-menu-item-icon {{item.icon}}"></span>
+                <p class="side-menu-item-label m-0">{{item.label}}</p>
+            </div>
+        }
+    </div>
+</div>

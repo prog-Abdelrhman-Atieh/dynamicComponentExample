@@ -1,0 +1,23 @@
+.logo{
+    width: 2.5rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: .5rem;
+    font-size: 1.3rem;
+    background-color: var(--primary);
+    color: var(--text-color-400);
+}
+
+.side-menu-item{
+    color: var(--text-color-300);
+
+    &-icon{
+        font-size: 1.6rem;
+    }
+
+    &.active{
+        color: var(--text-color-400);
+        background-color: var(--primary);
+    }
+}

@@ -1,0 +1,100 @@
+@if(!componentRefArray.length){
+    <div class="empty-dashboard d-flex flex-column align-items-center justify-content-center gap-4">
+        <span class="icon-dashboard"></span>
+        <span>Add Some Widgets</span>
+    </div>
+}
+
+<div class="dashboard-body row m-3">
+    <ng-container #dashboardBase></ng-container>
+</div>
+
+
+<div ngbDropdown class="dropup">
+    <button class="btn btn-primary menu-dashboard-btn"  id="dashboard-menu" ngbDropdownToggle >
+        <span class="icon-menu"></span>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dashboard-menu">
+        <button ngbDropdownItem (click)="openAddPopup()">Add Widget</button>
+        <button ngbDropdownItem (click)="openWidgetPopup()">Widgets</button>
+    </div>
+</div>
+
+
+<ng-template #AddPopup>
+    <div class="modal-header">
+        <h4 class="modal-title">Add Widget</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closePopup()"></button>
+    </div>
+    <div class="modal-body">
+        <form #widgetForm="ngForm" (ngSubmit)="addWidget(widgetForm)" class="form">
+            <div class="form-group mb-3">
+                <label for="widget-type">Widget Type</label>
+                <select ngModel name="widgetType" id="widget-type" class="form-select" placeholder="Select Type" >
+                    <option value="">Select Type</option>
+                    @for(type of widgetTypes | keyvalue; track type.key;){
+                        <option [value]="type.value">{{type.key}}</option>
+                    }
+                  </select>
+            </div>
+            <div class="form-group">
+                <label for="widgetSize">size</label>
+                <div class="d-flex align-items-center gap-2">
+                    <input class="flex-grow-1" [(ngModel)]="widgetSize" type="range" name="widgetSize" id="widgetSize" value="4" min="1" max="12">
+                    <span>{{widgetSize}}</span>
+                </div>
+            </div>
+            <button class="d-none" #submitButton type="submit"></button>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="submitButton.click()">Save</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="closePopup()">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #WidgetsPopup>
+    <div class="modal-header">
+        <h4 class="modal-title">Widgets</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closePopup()"></button>
+    </div>
+    <div class="modal-body">
+        @if(!componentRefArray.length){
+            <div class="empty-table">
+                There is no Widgets
+            </div>
+        } @else{
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th class="table-controls"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (row of componentRefArray; track index; let index = $index) {
+                        <tr>
+                            <td>{{row.instance.label}}</td>
+                            <td class="table-controls">
+                                <div class="d-flex align-items-center gap-2">
+                                    <button class="btn btn-outline-primary border-0" (click)="reorder(index, index - 1)">
+                                        <span class="icon-arrow_upward"></span>
+                                    </button>
+                                    <button class="btn btn-outline-primary border-0" (click)="reorder(index, index + 1)">
+                                        <span class="icon-arrow_downward"></span>
+                                    </button>
+                                    <button class="btn btn-outline-danger border-0" (click)="deleteWidget(index)">
+                                        <span class="icon-delete_outline"></span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="closePopup()">Close</button>
+    </div>
+</ng-template>

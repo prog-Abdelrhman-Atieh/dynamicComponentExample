@@ -1,0 +1,46 @@
+<div class="col-md-{{size}} p-2">
+    <div class="dashboard-widget">
+        <div class="dashboard-widget-header">
+            <h3 class="fs-4 dashboard-widget-label">Today's Sales</h3>
+            <p class="m-0 dashboard-widget-subtitle">Sales Summary</p>
+        </div>
+    
+        <div class="dashboard-widget-body">
+            <div class="data-grid">
+    
+                <div class="data-grid-item">
+                    <div class="data-grid-item-icon">
+                        <span class="icon-insert_chart"></span>
+                    </div>
+                    <p class="data-grid-item-data mb-0">{{data?.totalSales || '0'}}</p>
+                    <p class="data-grid-item-label mb-1">Total Sales</p>
+                </div>
+    
+                <div class="data-grid-item">
+                    <div class="data-grid-item-icon">
+                        <span class="icon-insert_drive_file"></span>
+                    </div>
+                    <p class="data-grid-item-data mb-0">{{data?.totalOrder || '0'}}</p>
+                    <p class="data-grid-item-label mb-1">Total Orders</p>
+                </div>
+    
+                <div class="data-grid-item">
+                    <div class="data-grid-item-icon">
+                        <span class="icon-bookmark"></span>
+                    </div>
+                    <p class="data-grid-item-data mb-0">{{data?.productSold || '0'}}</p>
+                    <p class="data-grid-item-label mb-1">Product Sold</p>
+                </div>
+    
+                <div class="data-grid-item">
+                    <div class="data-grid-item-icon">
+                        <span class="icon-person_add_alt_1"></span>
+                    </div>
+                    <p class="data-grid-item-data mb-0">{{data?.newCustomers || '0'}}</p>
+                    <p class="data-grid-item-label mb-1">New Customers</p>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+</div>

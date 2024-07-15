@@ -1,0 +1,22 @@
+<div class="col-md-{{size}} p-2">
+    <div class="dashboard-widget">
+        <div class="dashboard-widget-header">
+            <h3 class="fs-4 dashboard-widget-label">Customers Satisfaction</h3>
+        </div>
+    
+        <div class="dashboard-widget-body chart-body d-flex p-0">
+            @if(chartOptions){
+                <apx-chart #chart
+                class="flex-grow-1"
+                [series]="chartOptions.series"
+                [chart]="chartOptions.chart"
+                [xaxis]="chartOptions.xaxis"
+                [yaxis]="chartOptions.yaxis"
+                [stroke]="chartOptions.stroke"
+                [dataLabels]="chartOptions.dataLabels"
+                [title]="chartOptions.title"
+                ></apx-chart>
+            }
+        </div>
+    </div>
+</div>
