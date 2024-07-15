@@ -46,7 +46,7 @@ export class DashboardComponent implements AfterViewInit {
     this.closePopup();
   }
 
-  createWidget(component: Type<DashboardBaseDirective>, form: NgForm){
+  createWidget<component extends DashboardBaseDirective>(component: Type<component>, form: NgForm){
     // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicContentComponent);  // THIS LINE FOR VERSIONS BEFORE ANGULAR 13 //
     const componentRef: ComponentRef<DashboardBaseDirective> = this.container.createComponent(component);
     componentRef.instance.label = form.value.widgetType;
